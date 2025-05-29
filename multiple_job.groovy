@@ -3,23 +3,21 @@ def project = 'MYAPP'
 
 folder(project) {
     description("My project name is ${project}")
-    microservices.each { services ->
-        job("${project}/${project}-${service}") {
-            description("This is my service: ${project}-${services}")
-            scm{
-                git {
-                    remote{
-                        url('https://github.com/Sagar-Soin/Jenkins-dsl-testing.git')
-                    }
-                    branches('*/master')
+}
+microservices.each { services ->
+    job("${project}/${project}-${services}") {
+        description("This is my service: ${project}-${services}")
+        scm {
+            git {
+                remote {
+                    url('https://github.com/Sagar-Soin/Jenkins-dsl-testing.git')
                 }
+                branches('*/master')
             }
-            steps {
-                shell("echo My Project is ready : ${project}-${services}")
-            }
+        }
+        steps {
+            shell("echo My Project is ready : ${project}-${services}")
         }
     }
 }
-
-
 
