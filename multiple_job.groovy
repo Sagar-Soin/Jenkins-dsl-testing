@@ -1,10 +1,10 @@
 def microservices = ['serviceA', 'serviceB', 'serviceC']
 def project = 'MYAPP'
 
-Folder(project) {
+folder(project) {
     description("My project name is ${project}")
     microservices.each { services ->
-        job("${project}-${services}") {
+        job("${project}/${project}-${service}") {
             description("This is my service: ${project}-${services}")
             scm{
                 git {
